@@ -1,5 +1,5 @@
 let isTrend = (numbers) => {
-    if (numbers === 0) {
+    if (numbers.length === 0) {
         console.log([]);
         return;
     }
@@ -14,19 +14,22 @@ let isTrend = (numbers) => {
         
     let result = [];
     result.push(numbers[0]);
-
-    for (let i = 1; i < numbers.length; i++) {
-        if (isAscending) {
+    
+    if (isAscending) {
+        for (let i = 1; i < numbers.length; i += 1) {
             if (numbers[i] >= result[result.length - 1]) {
                 result.push(numbers[i]);
             }
-        } else {
+        }
+    } else {
+        for (let i = 1; i < numbers.length; i += 1) {
             if (numbers[i] <= result[result.length - 1]) {
                 result.push(numbers[i]);
             }
         }
     }
+
     console.log(result);
 };
 
-isTrend([1, 2, 3, 4, 2, 3, 4, 2, 3, 6, 8, 9]);
+isTrend([3, 2, 3, 4, 2, 3, 4, 2, 3, 4, 18, 9]);
