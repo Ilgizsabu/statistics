@@ -5,27 +5,16 @@ let isTrend = (numbers) => {
     }
 
     let isAscending = numbers[0] < numbers[numbers.length - 1];
-    
-    if (isAscending) {
-        console.log("Тренд восходящий");
-    } else {
-        console.log("Тренд нисходящий");
-    }
+    console.log(isAscending ? "Тренд восходящий" : "Тренд нисходящий");
         
     let result = [];
     result.push(numbers[0]);
     
-    if (isAscending) {
-        for (let i = 1; i < numbers.length; i += 1) {
-            if (numbers[i] >= result[result.length - 1]) {
-                result.push(numbers[i]);
-            }
-        }
-    } else {
-        for (let i = 1; i < numbers.length; i += 1) {
-            if (numbers[i] <= result[result.length - 1]) {
-                result.push(numbers[i]);
-            }
+    for (let i = 1; i < numbers.length; i += 1) {
+        if (isAscending && numbers[i] >= result[result.length - 1]) {
+            result.push(numbers[i]);
+        } else if (!isAscending && numbers[i] <= result[result.length - 1]) {
+            result.push(numbers[i]);
         }
     }
 
